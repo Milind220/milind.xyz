@@ -1,9 +1,6 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import { compileMDX } from 'next-mdx-remote/rsc';
-import rehypePrism from 'rehype-prism-plus';
-import rehypeSlug from 'rehype-slug';
 
 // Define the content types
 export type ContentType = 'blog' | 'projects';
@@ -16,48 +13,57 @@ export interface Frontmatter {
   tags: string[];
   image?: string;
   slug: string;
+  technologies?: string[];
   [key: string]: any;
 }
 
-// Get the directory for a specific content type
-const getContentDirectory = (type: ContentType) => {
-  return path.join(process.cwd(), 'content', type);
-};
-
-// Get all content files for a specific type
+/**
+ * Get all content files of a specific type
+ * @param type Content type ('blog' or 'projects')
+ * @returns Array of content frontmatter
+ */
 export async function getAllContent(type: ContentType): Promise<Frontmatter[]> {
-  const contentDir = getContentDirectory(type);
+  const contentDir = path.join(process.cwd(), 'content', type);
   
-  // Ensure directory exists
+  // Check if directory exists
   if (!fs.existsSync(contentDir)) {
+    console.warn(`Content directory not found: ${contentDir}`);
     return [];
   }
   
   const files = fs.readdirSync(contentDir);
+  const mdxFiles = files.filter(file => file.endsWith('.mdx'));
   
-  const content = files
-    .filter(file => file.endsWith('.mdx'))
-    .map(file => {
-      const filePath = path.join(contentDir, file);
-      const fileContent = fs.readFileSync(filePath, 'utf8');
-      const { data } = matter(fileContent);
-      const slug = file.replace(/\.mdx$/, '');
-      
-      return {
-        ...data,
-        slug,
-        date: data.date ? new Date(data.date).toISOString() : '',
-      } as Frontmatter;
-    })
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  const content = mdxFiles.map(file => {
+    const filePath = path.join(contentDir, file);
+    const fileContent = fs.readFileSync(filePath, 'utf8');
+    const { data } = matter(fileContent);
+    
+    return {
+      slug: file.replace('.mdx', ''),
+      title: data.title || 'Untitled',
+      description: data.description || '',
+      date: data.date || new Date().toISOString(),
+      tags: data.tags || [],
+      image: data.image,
+      technologies: data.technologies || [],
+    } as Frontmatter;
+  });
   
-  return content;
+  // Sort by date (newest first)
+  return content.sort((a, b) => 
+    new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
 }
 
-// Get a specific content file by slug
+/**
+ * Get a specific content file by slug
+ * @param type Content type ('blog' or 'projects')
+ * @param slug Content slug
+ * @returns Content frontmatter and raw content
+ */
 export async function getContentBySlug(type: ContentType, slug: string) {
-  const contentDir = getContentDirectory(type);
-  const filePath = path.join(contentDir, `${slug}.mdx`);
+  const filePath = path.join(process.cwd(), 'content', type, `${slug}.mdx`);
   
   if (!fs.existsSync(filePath)) {
     return null;
@@ -66,25 +72,16 @@ export async function getContentBySlug(type: ContentType, slug: string) {
   const fileContent = fs.readFileSync(filePath, 'utf8');
   const { data, content } = matter(fileContent);
   
-  const mdxSource = await compileMDX({
-    source: content,
-    options: {
-      parseFrontmatter: true,
-      mdxOptions: {
-        rehypePlugins: [
-          rehypePrism,
-          rehypeSlug,
-        ],
-      },
-    },
-  });
-  
   return {
     frontmatter: {
-      ...data,
       slug,
-      date: data.date ? new Date(data.date).toISOString() : '',
+      title: data.title || 'Untitled',
+      description: data.description || '',
+      date: data.date || new Date().toISOString(),
+      tags: data.tags || [],
+      image: data.image,
+      technologies: data.technologies || [],
     } as Frontmatter,
-    content: mdxSource.content,
+    content
   };
 }

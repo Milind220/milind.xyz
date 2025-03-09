@@ -141,3 +141,79 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     </article>
   );
 }
+import { getContentBySlug, getAllContent } from '@/lib/mdx';
+import { notFound } from 'next/navigation';
+import { Metadata } from 'next';
+
+interface ProjectPageProps {
+  params: {
+    slug: string;
+  };
+}
+
+// Generate metadata for the page
+export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
+  const project = await getContentBySlug('projects', params.slug);
+  
+  if (!project) {
+    return {
+      title: 'Project Not Found | milinds.xyz',
+      description: 'The requested project could not be found.',
+    };
+  }
+  
+  return {
+    title: `${project.frontmatter.title} | milinds.xyz`,
+    description: project.frontmatter.description,
+  };
+}
+
+// Generate static paths for all projects
+export async function generateStaticParams() {
+  const projects = await getAllContent('projects');
+  
+  return projects.map((project) => ({
+    slug: project.slug,
+  }));
+}
+
+export default async function ProjectPage({ params }: ProjectPageProps) {
+  const project = await getContentBySlug('projects', params.slug);
+  
+  if (!project) {
+    notFound();
+  }
+  
+  return (
+    <div className="flex flex-col gap-8">
+      <div className="flex flex-col gap-4">
+        <h1 className="text-3xl font-bold">{project.frontmatter.title}</h1>
+        <p className="text-muted-foreground">{project.frontmatter.description}</p>
+        
+        {project.frontmatter.technologies && (
+          <div className="flex flex-wrap gap-2 mt-2">
+            {project.frontmatter.technologies.map((tech: string) => (
+              <span key={tech} className="px-3 py-1 bg-muted text-muted-foreground rounded-full text-sm">
+                {tech}
+              </span>
+            ))}
+          </div>
+        )}
+      </div>
+      
+      {project.frontmatter.image && (
+        <div className="aspect-video overflow-hidden rounded-lg bg-muted">
+          <img 
+            src={project.frontmatter.image} 
+            alt={project.frontmatter.title} 
+            className="w-full h-full object-cover"
+          />
+        </div>
+      )}
+      
+      <div className="prose prose-slate max-w-none mt-8">
+        {project.content}
+      </div>
+    </div>
+  );
+}
