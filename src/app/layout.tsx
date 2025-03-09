@@ -31,11 +31,9 @@ export default function RootLayout({
         "min-h-screen bg-background font-sans antialiased",
         "text-foreground"
       )}>
-        <Header />
-        <main className="container max-w-5xl mx-auto px-4 md:px-6 py-8">
+        <BaseLayout>
           {children}
-        </main>
-        <SocialLinks />
+        </BaseLayout>
       </body>
     </html>
   );
