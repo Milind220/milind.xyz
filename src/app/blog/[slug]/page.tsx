@@ -60,9 +60,11 @@ export default async function BlogPostPage({ params }: PageProps) {
           <time>{formatDate(post.frontmatter.date)}</time>
           <span>•</span>
           <div className="flex gap-2">
-            {post.frontmatter.tags.map((tag) => (
-              <span key={tag} className="text-sm">#{tag}</span>
-            ))}
+            {post.frontmatter.tags && Array.isArray(post.frontmatter.tags) && 
+              post.frontmatter.tags.map((tag) => (
+                <span key={tag} className="text-sm">#{tag}</span>
+              ))
+            }
           </div>
         </div>
       </header>

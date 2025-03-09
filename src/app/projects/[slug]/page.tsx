@@ -86,7 +86,7 @@ export default async function ProjectPage({ params }: PageProps) {
         </div>
       )}
       
-      {project.frontmatter.link && (
+      {project.frontmatter.link && typeof project.frontmatter.link === 'string' && (
         <a 
           href={project.frontmatter.link}
           target="_blank"
