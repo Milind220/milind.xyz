@@ -9,20 +9,25 @@ export default function AboutPage() {
       
       <section className="max-w-prose">
         <p className="mb-4">
-          I'm a software engineer passionate about building clean, efficient, and user-friendly web applications.
-          With experience in modern frontend frameworks and backend technologies, I enjoy creating
-          full-stack solutions that solve real problems.
+          I'm a robotics engineer with a passion for software dev and electronics engineering.
+          I want to build awesome, useful products that make the world better. 
+          Currently, I'm the Lead Electronics Engineer at Clearbot, Making PCBs and writing firmware for autonomous ocean cleaning boats.
+          
+          Starting with this website (March 9th, 2025), I'm starting a whole chain of projects to explore all the ideas I have in my head.
+        
+          Keep an eye out for them. I'll also be posting about them on X.
         </p>
         <p>
-          When I'm not coding, you can find me exploring new technologies, contributing to open source,
-          or enjoying the outdoors.
+          I studied Energy Science and Engineering at CityU HK, then realised that's going nowhere in Hong Kong, so I applied 
+          to Clearbot as a robotics engineer. Weeks later I realised I'd be a lot more useful designnig the electronics and writing the firmware,
+          so that's what I've been doing for the past year and a half. 
         </p>
       </section>
       
       <section className="mt-8">
         <h2 className="text-xl font-semibold mb-4">Skills & Technologies</h2>
         <div className="flex flex-wrap gap-2">
-          {["JavaScript", "TypeScript", "React", "Next.js", "Node.js", "Tailwind CSS"].map((skill) => (
+          {["PCB design", "KiCAD", "C/C++ firmware", "Rust", "Python", "Using AI to do what I can't", "Learning what I don't know"].map((skill) => (
             <span key={skill} className="px-3 py-1 bg-muted text-muted-foreground rounded-full text-sm">
               {skill}
             </span>
