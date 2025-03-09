@@ -10,9 +10,10 @@ const inter = Inter({
   variable: '--font-inter',
 });
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'milinds.xyz',
   description: 'Personal website and blog',
+  themeColor: '#FFFFFF',
 };
 
 export default function RootLayout({
