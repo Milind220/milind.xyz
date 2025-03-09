@@ -2,7 +2,31 @@
  * Home page component for milinds.xyz
  * Displays a hero section with introduction and featured projects
  */
-export default function Home() {
+import Link from 'next/link';
+import { getAllContent } from '@/lib/mdx';
+import { ProjectCard } from '@/components/projects/project-card';
+
+export default async function Home() {
+  // Get featured projects (first 2 projects)
+  const projects = await getAllContent('projects');
+  const featuredProjects = projects.slice(0, 2);
+  
+  // Fallback projects if no MDX content is found
+  const fallbackProjects = [
+    {
+      title: "Ocean Cleaning Robot",
+      description: "PCB design and firmware for autonomous boats that collect plastic waste from oceans.",
+      technologies: ["KiCAD", "C++", "Embedded Systems"],
+      slug: "ocean-robot"
+    },
+    {
+      title: "Personal Website",
+      description: "A modern, minimalist personal website built with Next.js, TypeScript, and Tailwind CSS.",
+      technologies: ["Next.js", "TypeScript", "Tailwind"],
+      slug: "personal-website"
+    }
+  ];
+  
   return (
     <div className="flex flex-col gap-12">
       {/* Hero Section */}
@@ -19,20 +43,39 @@ export default function Home() {
 
       {/* Featured Projects Section */}
       <section className="flex flex-col gap-6">
-        <h2 className="text-2xl font-semibold">Featured Projects</h2>
+        <div className="flex items-center justify-between">
+          <h2 className="text-2xl font-semibold">Featured Projects</h2>
+          <Link 
+            href="/projects" 
+            className="text-sm text-accent hover:underline"
+          >
+            View all projects →
+          </Link>
+        </div>
+        
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="border border-border rounded-lg p-6 hover:border-accent transition-colors">
-            <h3 className="font-medium mb-2">Project One</h3>
-            <p className="text-muted-foreground text-sm">
-              A brief description of this amazing project and the technologies used.
-            </p>
-          </div>
-          <div className="border border-border rounded-lg p-6 hover:border-accent transition-colors">
-            <h3 className="font-medium mb-2">Project Two</h3>
-            <p className="text-muted-foreground text-sm">
-              A brief description of this amazing project and the technologies used.
-            </p>
-          </div>
+          {featuredProjects.length > 0 ? (
+            featuredProjects.map((project) => (
+              <ProjectCard
+                key={project.slug}
+                title={project.title}
+                description={project.description}
+                technologies={project.technologies || []}
+                image={project.image}
+                link={`/projects/${project.slug}`}
+              />
+            ))
+          ) : (
+            fallbackProjects.map((project) => (
+              <ProjectCard
+                key={project.slug}
+                title={project.title}
+                description={project.description}
+                technologies={project.technologies}
+                link={`/projects/${project.slug}`}
+              />
+            ))
+          )}
         </div>
       </section>
     </div>
