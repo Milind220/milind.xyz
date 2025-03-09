@@ -38,7 +38,7 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function ProjectPage(_props: ProjectPageProps) {
+export default async function ProjectPage() {
   // This will be used when MDX content is ready
   // const project = await getContentBySlug('projects', params.slug);
   
@@ -205,11 +205,13 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       </div>
       
       {project.frontmatter.image && (
-        <div className="aspect-video overflow-hidden rounded-lg bg-muted">
-          <img 
+        <div className="aspect-video overflow-hidden rounded-lg bg-muted relative">
+          <Image 
             src={project.frontmatter.image} 
-            alt={project.frontmatter.title} 
-            className="w-full h-full object-cover"
+            alt={project.frontmatter.title}
+            fill
+            sizes="(max-width: 768px) 100vw, 960px"
+            className="object-cover"
           />
         </div>
       )}
