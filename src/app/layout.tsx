@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from 'next/font/google';
 import { Header } from '@/components/layout/header';
 import { SocialLinks } from '@/components/common/social-links';
@@ -14,6 +14,9 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: 'milinds.xyz',
   description: 'Personal website and blog',
+};
+
+export const viewport: Viewport = {
   themeColor: '#FFFFFF',
 };
 
