@@ -8,13 +8,13 @@ export function SocialLinks() {
       "flex flex-col gap-4",
       "text-foreground hover:text-accent"
     )}>
-      <a href="https://github.com/username" className="hover:text-accent">
+      <a href="https://github.com/Milind220" className="hover:text-accent">
         <Github className="h-5 w-5" />
       </a>
-      <a href="https://twitter.com/username" className="hover:text-accent">
+      <a href="https://twitter.com/MilindS_" className="hover:text-accent">
         <Twitter className="h-5 w-5" />
       </a>
-      <a href="https://linkedin.com/in/username" className="hover:text-accent">
+      <a href="https://www.linkedin.com/in/milindsharma8/" className="hover:text-accent">
         <Linkedin className="h-5 w-5" />
       </a>
     </div>

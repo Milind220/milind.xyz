@@ -4,6 +4,7 @@ import { Header } from '@/components/layout/header';
 import { SocialLinks } from '@/components/common/social-links';
 import { cn } from '@/lib/utils';
 import './globals.css';
+import { BaseLayout } from "@/components/layout/base-layout";
 
 const inter = Inter({
   subsets: ['latin'],
