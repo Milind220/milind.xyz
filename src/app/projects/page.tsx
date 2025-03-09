@@ -14,33 +14,19 @@ export const metadata: Metadata = {
 // Fallback project data in case no MDX content is found
 const fallbackProjects = [
   {
-    title: "Autonomous Ocean Cleaning Robot",
-    description: "PCB design and firmware for autonomous boats that collect plastic waste from oceans.",
-    technologies: ["KiCAD", "C++", "Embedded Systems", "Robotics"],
-    image: "/images/projects/ocean-robot.jpg",
-    slug: "ocean-robot"
+    title: "Ozon3",
+    description: "An open-source Python package to easily obtain real-time, historical, or forecasted air quality data for anywhere in the world. Reliable, accurate and simple.",
+    technologies: ["Python", "Open-Source Software"],
+    image: "",
+    slug: "ozon3-python-package"
   },
   {
     title: "Personal Website",
     description: "A modern, minimalist personal website built with Next.js, TypeScript, and Tailwind CSS.",
     technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
-    image: "/images/projects/personal-website.jpg",
+    image: "",
     slug: "personal-website"
   },
-  {
-    title: "Smart Home Energy Monitor",
-    description: "IoT device that monitors and optimizes home energy usage with real-time feedback.",
-    technologies: ["Rust", "IoT", "PCB Design", "Data Visualization"],
-    image: "/images/projects/energy-monitor.jpg",
-    slug: "energy-monitor"
-  },
-  {
-    title: "AI-Powered Plant Care System",
-    description: "Computer vision system that monitors plant health and automates watering schedules.",
-    technologies: ["Python", "TensorFlow", "Computer Vision", "Raspberry Pi"],
-    image: "/images/projects/plant-care.jpg",
-    slug: "plant-care"
-  }
 ];
 
 export default async function ProjectsPage() {
