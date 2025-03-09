@@ -9,12 +9,13 @@ import { Metadata } from 'next';
 
 // Use the Next.js generated PageProps type
 type PageProps = {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
   searchParams?: { [key: string]: string | string[] | undefined };
 };
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const post = await getContentBySlug('blog', params.slug);
+  const { slug } = await params;
+  const post = await getContentBySlug('blog', slug);
   
   if (!post) {
     return {
@@ -44,7 +45,8 @@ export async function generateStaticParams() {
 }
 
 export default async function BlogPostPage({ params }: PageProps) {
-  const post = await getContentBySlug('blog', params.slug);
+  const { slug } = await params;
+  const post = await getContentBySlug('blog', slug);
   
   if (!post) {
     notFound();

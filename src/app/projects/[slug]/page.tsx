@@ -85,3 +85,90 @@ export default async function ProjectPage({ params }: PageProps) {
     </article>
   );
 }
+/**
+ * Project page component
+ * Displays a single project with full content
+ */
+import { getContentBySlug, getAllContent } from '@/lib/mdx';
+import { notFound } from 'next/navigation';
+import { Metadata } from 'next';
+
+// Use the Next.js generated PageProps type
+type PageProps = {
+  params: Promise<{ slug: string }>;
+  searchParams?: { [key: string]: string | string[] | undefined };
+};
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const project = await getContentBySlug('projects', slug);
+  
+  if (!project) {
+    return {
+      title: 'Project Not Found | milinds.xyz',
+    };
+  }
+  
+  return {
+    title: `${project.frontmatter.title} | milinds.xyz`,
+    description: project.frontmatter.description,
+    openGraph: {
+      title: project.frontmatter.title,
+      description: project.frontmatter.description,
+      type: 'article',
+    },
+  };
+}
+
+export async function generateStaticParams() {
+  const projects = await getAllContent('projects');
+  
+  return projects.map((project) => ({
+    slug: project.slug,
+  }));
+}
+
+export default async function ProjectPage({ params }: PageProps) {
+  const { slug } = await params;
+  const project = await getContentBySlug('projects', slug);
+  
+  if (!project) {
+    notFound();
+  }
+  
+  return (
+    <article className="flex flex-col gap-8">
+      <header className="flex flex-col gap-4">
+        <h1 className="text-3xl font-bold">{project.frontmatter.title}</h1>
+        
+        {project.frontmatter.link && (
+          <a 
+            href={project.frontmatter.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-500 hover:underline"
+          >
+            View Project →
+          </a>
+        )}
+        
+        {project.frontmatter.technologies && (
+          <div className="flex flex-wrap gap-2 mt-2">
+            {project.frontmatter.technologies.map((tech: string) => (
+              <span 
+                key={tech} 
+                className="px-2 py-1 text-xs rounded-full bg-neutral-100 dark:bg-neutral-800"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+        )}
+      </header>
+      
+      <div className="prose prose-neutral dark:prose-invert max-w-none">
+        {project.content}
+      </div>
+    </article>
+  );
+}
