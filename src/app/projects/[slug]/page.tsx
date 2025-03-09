@@ -9,13 +9,11 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft } from 'lucide-react';
 
-// Define the props for the page component
-interface PageProps {
-  params: {
-    slug: string;
-  };
-  searchParams: Record<string, string | string[] | undefined>;
-}
+// Use the Next.js generated PageProps type
+type PageProps = {
+  params: { slug: string };
+  searchParams?: { [key: string]: string | string[] | undefined };
+};
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const project = await getContentBySlug('projects', params.slug);

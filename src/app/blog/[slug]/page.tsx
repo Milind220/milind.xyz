@@ -7,13 +7,11 @@ import { formatDate } from '@/lib/utils';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 
-// Define the props for the page component
-interface PageProps {
-  params: {
-    slug: string;
-  };
-  searchParams: Record<string, string | string[] | undefined>;
-}
+// Use the Next.js generated PageProps type
+type PageProps = {
+  params: { slug: string };
+  searchParams?: { [key: string]: string | string[] | undefined };
+};
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const post = await getContentBySlug('blog', params.slug);
