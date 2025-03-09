@@ -7,10 +7,12 @@ import { formatDate } from '@/lib/utils';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 
+interface BlogPostParams {
+  slug: string;
+}
+
 interface BlogPostPageProps {
-  params: {
-    slug: string;
-  };
+  params: BlogPostParams;
 }
 
 export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {

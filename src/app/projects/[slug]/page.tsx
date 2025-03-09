@@ -9,10 +9,12 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft } from 'lucide-react';
 
+interface ProjectParams {
+  slug: string;
+}
+
 interface ProjectPageProps {
-  params: {
-    slug: string;
-  };
+  params: ProjectParams;
 }
 
 export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
