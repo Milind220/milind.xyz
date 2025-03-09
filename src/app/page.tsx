@@ -11,8 +11,9 @@ export default function Home() {
           Hi, I'm <span className="text-accent">Milind</span>
         </h1>
         <p className="text-xl text-muted-foreground max-w-prose">
-          I build things for the web. Software engineer focused on creating clean, 
-          user-friendly experiences with modern technologies.
+            I love robots, software, and building things.
+            An optimist and a dreamer, I'm always looking for ways to make the world a better place.
+            Currently Lead Electronics Engineer at Clearbot, working on autonomous ocean cleaning boats.
         </p>
       </section>
 

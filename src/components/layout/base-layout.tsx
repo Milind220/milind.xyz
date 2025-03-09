@@ -1,7 +1,6 @@
 import { cn } from '@/lib/utils'
 import { Header } from '@/components/layout/header'
 import { SocialLinks } from '@/components/common/social-links'
-import { Footer } from '@/components/layout/footer'
 
 /**
  * Base layout containing header, main content, and social links
@@ -14,7 +13,6 @@ export function BaseLayout({ children }: { children: React.ReactNode }) {
         {children}
       </main>
       <SocialLinks />
-      <Footer />
     </>
   )
 }

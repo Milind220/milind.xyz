@@ -14,7 +14,7 @@ export function Header() {
         "px-4 md:px-6"
       )}>
         <Link href="/" className="font-medium text-foreground hover:text-accent transition-colors">
-          milind
+          Milind Sharma
         </Link>
         <nav className="flex items-center gap-6">
           <Link
