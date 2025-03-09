@@ -9,15 +9,15 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft } from 'lucide-react';
 
-interface ProjectParams {
-  slug: string;
+// Define the props for the page component
+interface PageProps {
+  params: {
+    slug: string;
+  };
+  searchParams: Record<string, string | string[] | undefined>;
 }
 
-interface ProjectPageProps {
-  params: ProjectParams;
-}
-
-export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const project = await getContentBySlug('projects', params.slug);
   
   if (!project) {
@@ -40,7 +40,7 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function ProjectPage({ params }: ProjectPageProps) {
+export default async function ProjectPage({ params }: PageProps) {
   const project = await getContentBySlug('projects', params.slug);
   
   if (!project) {

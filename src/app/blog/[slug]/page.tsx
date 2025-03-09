@@ -7,15 +7,15 @@ import { formatDate } from '@/lib/utils';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 
-interface BlogPostParams {
-  slug: string;
+// Define the props for the page component
+interface PageProps {
+  params: {
+    slug: string;
+  };
+  searchParams: Record<string, string | string[] | undefined>;
 }
 
-interface BlogPostPageProps {
-  params: BlogPostParams;
-}
-
-export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const post = await getContentBySlug('blog', params.slug);
   
   if (!post) {
@@ -45,7 +45,7 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function BlogPostPage({ params }: BlogPostPageProps) {
+export default async function BlogPostPage({ params }: PageProps) {
   const post = await getContentBySlug('blog', params.slug);
   
   if (!post) {
