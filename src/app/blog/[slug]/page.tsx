@@ -10,7 +10,7 @@ import { Metadata } from 'next';
 // Use the Next.js generated PageProps type
 type PageProps = {
   params: Promise<{ slug: string }>;
-  searchParams?: { [key: string]: string | string[] | undefined };
+  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
