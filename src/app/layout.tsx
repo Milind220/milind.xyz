@@ -1,7 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from 'next/font/google';
-import { Header } from '@/components/layout/header';
-import { SocialLinks } from '@/components/common/social-links';
 import { cn } from '@/lib/utils';
 import './globals.css';
 import { BaseLayout } from "@/components/layout/base-layout";

@@ -14,7 +14,7 @@ export interface Frontmatter {
   image?: string;
   slug: string;
   technologies?: string[];
-  [key: string]: any;
+  [key: string]: string | string[] | undefined;
 }
 
 /**

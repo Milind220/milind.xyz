@@ -9,18 +9,18 @@ export default function AboutPage() {
       
       <section className="max-w-prose">
         <p className="mb-4">
-          I'm a robotics engineer with a passion for software dev and electronics engineering.
+          I&apos;m a robotics engineer with a passion for software dev and electronics engineering.
           I want to build awesome, useful products that make the world better. 
-          Currently, I'm the Lead Electronics Engineer at Clearbot, Making PCBs and writing firmware for autonomous ocean cleaning boats.
+          Currently, I&apos;m the Lead Electronics Engineer at Clearbot, Making PCBs and writing firmware for autonomous ocean cleaning boats.
           
-          Starting with this website (March 9th, 2025), I'm starting a whole chain of projects to explore all the ideas I have in my head.
+          Starting with this website (March 9th, 2025), I&apos;m starting a whole chain of projects to explore all the ideas I have in my head.
         
-          Keep an eye out for them. I'll also be posting about them on X.
+          Keep an eye out for them. I&apos;ll also be posting about them on X.
         </p>
         <p>
-          I studied Energy Science and Engineering at CityU HK, then realised that's going nowhere in Hong Kong, so I applied 
-          to Clearbot as a robotics engineer. Weeks later I realised I'd be a lot more useful designnig the electronics and writing the firmware,
-          so that's what I've been doing for the past year and a half. 
+          I studied Energy Science and Engineering at CityU HK, then realised that&apos;s going nowhere in Hong Kong, so I applied 
+          to Clearbot as a robotics engineer. Weeks later I realised I&apos;d be a lot more useful designnig the electronics and writing the firmware,
+          so that&apos;s what I&apos;ve been doing for the past year and a half. 
         </p>
       </section>
       

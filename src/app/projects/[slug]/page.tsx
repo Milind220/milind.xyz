@@ -6,6 +6,7 @@ import { getContentBySlug, getAllContent } from '@/lib/mdx';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowLeft } from 'lucide-react';
 
 interface ProjectPageProps {
@@ -37,7 +38,7 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function ProjectPage({ params }: ProjectPageProps) {
+export default async function ProjectPage(_props: ProjectPageProps) {
   // This will be used when MDX content is ready
   // const project = await getContentBySlug('projects', params.slug);
   
@@ -103,11 +104,13 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       </header>
       
       {project.frontmatter.image && (
-        <div className="aspect-video overflow-hidden rounded-lg bg-muted">
-          <img 
+        <div className="aspect-video overflow-hidden rounded-lg bg-muted relative">
+          <Image 
             src={project.frontmatter.image} 
-            alt={project.frontmatter.title} 
-            className="h-full w-full object-cover"
+            alt={project.frontmatter.title}
+            fill
+            sizes="(max-width: 768px) 100vw, 960px"
+            className="object-cover"
           />
         </div>
       )}

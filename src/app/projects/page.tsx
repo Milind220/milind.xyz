@@ -3,7 +3,6 @@
  * Displays a grid of projects with filtering options
  */
 import { ProjectCard } from '@/components/projects/project-card';
-import { getAllContent } from '@/lib/mdx';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {

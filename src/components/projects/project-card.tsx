@@ -3,6 +3,7 @@
  * Displays a single project with image, title, description, and technologies
  */
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface ProjectCardProps {
   title: string;
@@ -21,12 +22,14 @@ export function ProjectCard({
 }: ProjectCardProps) {
   const CardContent = () => (
     <>
-      <div className="aspect-video overflow-hidden bg-muted">
+      <div className="aspect-video overflow-hidden bg-muted relative">
         {image && (
-          <img 
+          <Image 
             src={image} 
-            alt={title} 
-            className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+            alt={title}
+            fill
+            sizes="(max-width: 768px) 100vw, 50vw"
+            className="object-cover transition-transform duration-300 group-hover:scale-105"
           />
         )}
       </div>

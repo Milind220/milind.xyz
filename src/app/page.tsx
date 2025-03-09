@@ -8,11 +8,11 @@ export default function Home() {
       {/* Hero Section */}
       <section className="flex flex-col gap-4 py-12">
         <h1 className="text-4xl font-bold tracking-tight">
-          Hi, I'm <span className="text-accent">Milind</span>
+          Hi, I&apos;m <span className="text-accent">Milind</span>
         </h1>
         <p className="text-xl text-muted-foreground max-w-prose">
             I love robots, software, and building things.
-            An optimist and a dreamer, I'm always looking for ways to make the world a better place.
+            An optimist and a dreamer, I&apos;m always looking for ways to make the world a better place.
             Currently Lead Electronics Engineer at Clearbot, working on autonomous ocean cleaning boats.
         </p>
       </section>
