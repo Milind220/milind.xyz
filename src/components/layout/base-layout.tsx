@@ -9,7 +9,10 @@ export function BaseLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <Header />
-      <main className="container max-w-5xl mx-auto px-4 md:px-6 py-8">
+      <main className={cn(
+        "container max-w-5xl mx-auto",
+        "py-8 px-4 md:px-6 md:py-12"
+      )}>
         {children}
       </main>
       <SocialLinks />

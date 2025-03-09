@@ -2,6 +2,8 @@
  * ProjectCard component
  * Displays a single project with image, title, description, and technologies
  */
+import Link from 'next/link';
+
 interface ProjectCardProps {
   title: string;
   description: string;
@@ -17,8 +19,8 @@ export function ProjectCard({
   image, 
   link 
 }: ProjectCardProps) {
-  return (
-    <div className="group flex flex-col overflow-hidden rounded-lg border border-border hover:border-accent transition-colors">
+  const CardContent = () => (
+    <>
       <div className="aspect-video overflow-hidden bg-muted">
         {image && (
           <img 
@@ -39,6 +41,23 @@ export function ProjectCard({
           ))}
         </div>
       </div>
+    </>
+  );
+
+  if (link) {
+    return (
+      <Link 
+        href={link} 
+        className="group flex flex-col overflow-hidden rounded-lg border border-border hover:border-accent transition-colors"
+      >
+        <CardContent />
+      </Link>
+    );
+  }
+
+  return (
+    <div className="group flex flex-col overflow-hidden rounded-lg border border-border hover:border-accent transition-colors">
+      <CardContent />
     </div>
   );
 }

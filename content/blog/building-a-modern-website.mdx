@@ -1,0 +1,63 @@
+---
+title: "Building a Modern Website with Next.js and Tailwind"
+description: "How I built my personal website using Next.js 14, Tailwind CSS, and TypeScript."
+date: "2025-03-09"
+tags: ["webdev", "nextjs", "tailwind"]
+---
+
+# Building a Modern Website
+
+When I decided to rebuild my personal website, I wanted to create something that was both visually appealing and technically sound. After researching various technologies, I settled on Next.js 14 with the App Router, Tailwind CSS for styling, and TypeScript for type safety.
+
+## Why Next.js?
+
+Next.js offers several advantages for a personal website:
+
+- **Server Components**: Reduces JavaScript sent to the client
+- **Image Optimization**: Automatically optimizes images for performance
+- **App Router**: Simplified routing with nested layouts
+- **Static Generation**: Fast loading times with pre-rendered pages
+
+```tsx
+// Example of a Next.js page component
+export default function HomePage() {
+  return (
+    <div className="container">
+      <h1>Welcome to my website</h1>
+      <p>Built with Next.js and Tailwind CSS</p>
+    </div>
+  );
+}
+```
+
+## Styling with Tailwind CSS
+
+Tailwind CSS has revolutionized how I approach styling:
+
+1. **Utility-First**: Write styles directly in your markup
+2. **Consistency**: Predefined design system ensures consistency
+3. **Responsive Design**: Built-in responsive utilities
+4. **Dark Mode**: Easy implementation of dark/light themes
+
+## TypeScript Integration
+
+Adding TypeScript to the mix provides:
+
+- **Type Safety**: Catch errors during development
+- **Better IDE Experience**: Improved autocomplete and documentation
+- **Maintainability**: Easier to refactor and understand code
+
+## Deployment
+
+I deployed the site on Vercel, which offers:
+
+- **Zero Configuration**: Automatic deployments from Git
+- **Preview Deployments**: Every PR gets its own preview URL
+- **Analytics**: Built-in performance monitoring
+- **Edge Functions**: Global low-latency API routes
+
+## Conclusion
+
+Building this website has been a great learning experience. The combination of Next.js, Tailwind CSS, and TypeScript provides a powerful foundation for creating modern web applications.
+
+I'm looking forward to continuing to improve and expand this site with new features and content!
