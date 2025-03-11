@@ -69,7 +69,17 @@ export default async function BlogPostPage({ params }: PageProps) {
         </div>
       </header>
       
-      <div className="prose prose-neutral dark:prose-invert max-w-none">
+      <div className={cn(
+        "prose prose-sm md:prose-base lg:prose-lg",
+        "prose-neutral dark:prose-invert",
+        "max-w-4xl mx-auto",
+        "prose-headings:font-semibold",
+        "prose-a:text-accent hover:prose-a:text-accent/80",
+        "prose-code:before:hidden prose-code:after:hidden",
+        "prose-code:bg-muted prose-code:px-1 prose-code:py-0.5 prose-code:rounded",
+        "prose-pre:bg-muted prose-pre:rounded-lg prose-pre:p-4",
+        "prose-img:rounded-lg prose-img:shadow-md"
+      )}>
         {post.content}
       </div>
     </article>
