@@ -7,7 +7,6 @@ import { cn, formatDate } from '@/lib/utils';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import { MDXContent } from '@/components/mdx/mdx-content';
-import { serialize } from 'next-mdx-remote/serialize';
 
 // Use the Next.js generated PageProps type
 type PageProps = {
@@ -54,8 +53,6 @@ export default async function BlogPostPage({ params }: PageProps) {
     notFound();
   }
 
-  // Serialize the MDX content
-  const serializedContent = await serialize(post.content);
   
   return (
     <article className="flex flex-col gap-8">
@@ -85,7 +82,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         "prose-pre:bg-muted prose-pre:rounded-lg prose-pre:p-4",
         "prose-img:rounded-lg prose-img:shadow-md"
       )}>
-        <MDXContent source={serializedContent} />
+        <MDXContent code={post.content} />
       </div>
     </article>
   );

@@ -1,8 +1,6 @@
-'use client';
-
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
-import { ComponentPropsWithoutRef, ReactNode } from 'react';
+import { ComponentPropsWithoutRef } from 'react';
 
 export const components = {
   h1: (props: ComponentPropsWithoutRef<'h1'>) => (
