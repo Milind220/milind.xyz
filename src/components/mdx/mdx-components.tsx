@@ -1,11 +1,10 @@
-import { cn } from '@/lib/utils'
-import Link from 'next/link'
-import Image, { ImageProps } from 'next/image'
-import { ComponentPropsWithoutRef } from 'react'
-import type { MDXComponents } from 'mdx/types'
+'use client';
 
-export function useMDXComponents(components: MDXComponents): MDXComponents {
-  return {
+import { cn } from '@/lib/utils';
+import Link from 'next/link';
+import { ComponentPropsWithoutRef, ReactNode } from 'react';
+
+export const components = {
   h1: (props: ComponentPropsWithoutRef<'h1'>) => (
     <h1 className="text-3xl font-bold mt-8 mb-4" {...props} />
   ),

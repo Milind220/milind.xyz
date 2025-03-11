@@ -3,10 +3,9 @@
  * Displays a single blog post with full content
  */
 import { getContentBySlug, getAllContent } from '@/lib/mdx';
-import { formatDate } from '@/lib/utils';
+import { cn, formatDate } from '@/lib/utils';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
-import { MDXContent } from '@/components/mdx/mdx-content';
 
 // Use the Next.js generated PageProps type
 type PageProps = {
@@ -52,7 +51,6 @@ export default async function BlogPostPage({ params }: PageProps) {
   if (!post) {
     notFound();
   }
-
   
   return (
     <article className="flex flex-col gap-8">
@@ -82,7 +80,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         "prose-pre:bg-muted prose-pre:rounded-lg prose-pre:p-4",
         "prose-img:rounded-lg prose-img:shadow-md"
       )}>
-        <MDXContent code={post.content} />
+        {post.content}
       </div>
     </article>
   );
