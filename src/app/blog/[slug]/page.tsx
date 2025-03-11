@@ -3,7 +3,7 @@
  * Displays a single blog post with full content
  */
 import { getContentBySlug, getAllContent } from '@/lib/mdx';
-import { cn, formatDate } from '@/lib/utils';
+import { formatDate } from '@/lib/utils';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import { MDXContent } from '@/components/mdx/mdx-content';
