@@ -17,6 +17,6 @@ export function BaseLayout({ children }: { children: React.ReactNode }) {
         {children}
       </main>
       <SocialLinks />
-    </>
+    </ThemeProvider>
   )
 }
