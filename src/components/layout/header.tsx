@@ -16,7 +16,8 @@ export function Header() {
         <Link href="/" className="font-medium text-foreground hover:text-accent transition-colors">
           Milind Sharma
         </Link>
-        <nav className="flex items-center gap-6">
+        <nav className="flex items-center gap-4">
+          <ThemeToggle />
           <Link
             href="/about"
             className="text-sm font-medium text-foreground hover:text-accent transition-colors"
