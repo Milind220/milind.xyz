@@ -6,8 +6,7 @@ import { getContentBySlug, getAllContent } from '@/lib/mdx';
 import { cn, formatDate } from '@/lib/utils';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
-import { MDXRemote } from 'next-mdx-remote';
-import { components } from '@/components/mdx/mdx-components';
+import { MDXContent } from '@/components/mdx/mdx-content';
 
 // Use the Next.js generated PageProps type
 type PageProps = {
@@ -82,7 +81,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         "prose-pre:bg-muted prose-pre:rounded-lg prose-pre:p-4",
         "prose-img:rounded-lg prose-img:shadow-md"
       )}>
-        <MDXRemote {...post.content} components={components} />
+        <MDXContent source={post.content} />
       </div>
     </article>
   );
