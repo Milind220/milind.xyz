@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
-import { MoonIcon, SunIcon } from 'react-icons/fa';
+import { FaMoon, FaSun } from 'react-icons/fa';
 
 export function ThemeToggle() {
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
@@ -34,9 +34,9 @@ export function ThemeToggle() {
       aria-label="Toggle theme"
     >
       {theme === 'light' ? (
-        <SunIcon className="h-4 w-4" />
+        <FaSun className="h-4 w-4" />
       ) : (
-        <MoonIcon className="h-4 w-4" />
+        <FaMoon className="h-4 w-4" />
       )}
     </button>
   );
