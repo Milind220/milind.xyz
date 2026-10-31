@@ -32,8 +32,8 @@ Edit the bio and interests in `src/pages/index.astro`.
 ## Deployment
 
 `vercel.json` selects Astro and the `dist` output directory. The existing Vercel
-project must be connected to this repository and its production branch for
-Git pushes to publish automatically. That connection has not yet been verified.
+project is connected to `Milind220/milind.xyz`; pushes to `main` publish
+automatically to https://milinds.xyz.
 
 The previous implementation and sample content remain available in Git history;
 old sample MDX files under `content/` are not published by the new site.
