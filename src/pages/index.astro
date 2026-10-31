@@ -1,7 +1,7 @@
 ---
 import Page from '../layouts/Page.astro';
 import links from '../data/links.json';
-const essays = Object.values(import.meta.glob('./writing/*.md', { eager: true })).filter((essay: any) => !essay.frontmatter.draft).map((essay: any) => ({ title: essay.frontmatter.title, url: essay.url, source: '' }));
+const essays = Object.values(import.meta.glob('./writing/*.md', { eager: true })).filter((essay: any) => !essay.frontmatter.draft).map((essay: any) => ({ title: essay.frontmatter.title, url: essay.url }));
 ---
 <Page>
   <h1>Milind Sharma</h1>
@@ -19,7 +19,7 @@ const essays = Object.values(import.meta.glob('./writing/*.md', { eager: true })
   <section aria-labelledby="writing">
     <h2 id="writing">Things I think about</h2>
     <ul class="writing">
-      {[...essays, ...links].map(({ title, url, source }) => <li><a href={url}>{title}</a>{source && <span class="source">{source}</span>}</li>)}
+      {[...essays, ...links].map(({ title, url }) => <li><a href={url}>{title}</a></li>)}
     </ul>
   </section>
   <nav aria-label="Elsewhere"><a href="https://x.com/milindS_">X</a><a href="https://github.com/milind220">GitHub</a></nav>
