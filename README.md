@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Milind's website
 
-## Getting Started
+A static Astro site. No client-side JavaScript, CMS, database, or accounts.
 
-First, run the development server:
+## Run locally
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Use Node 22.12 or later. Run `npm ci`, then `npm run dev`.
+Run `npm run build` to produce the static site in `dist/`.
+
+## Publish an essay
+
+Create `src/pages/writing/your-title.md`:
+
+```markdown
+---
+layout: ../../layouts/Essay.astro
+title: Your title
+description: A short description for search and sharing.
+---
+
+Your essay goes here. Ordinary Markdown, links, and images work.
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+It appears at `/writing/your-title/` and is automatically listed on the homepage.
+The list follows filename order. Set `draft: true` to hide an unfinished essay
+from the list; files under pages still get a public URL, so keep private drafts
+outside `src/pages` and the repository.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+For external writing, add a title, URL, and source to `src/data/links.json`.
+Edit the bio and interests in `src/pages/index.astro`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Deployment
 
-## Learn More
+`vercel.json` selects Astro and the `dist` output directory. The existing Vercel
+project must be connected to this repository and its production branch for
+Git pushes to publish automatically. That connection has not yet been verified.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The previous implementation and sample content remain available in Git history;
+old sample MDX files under `content/` are not published by the new site.

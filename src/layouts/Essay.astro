@@ -1,0 +1,8 @@
+---
+import Page from './Page.astro';
+const { frontmatter } = Astro.props;
+---
+<Page title={`${frontmatter.title} — Milind Sharma`} description={frontmatter.description}>
+  <a class="back" href="/">← Milind Sharma</a>
+  <article><h1>{frontmatter.title}</h1><slot /></article>
+</Page>

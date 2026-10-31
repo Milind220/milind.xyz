@@ -1,0 +1,26 @@
+---
+import Page from '../layouts/Page.astro';
+import links from '../data/links.json';
+const essays = Object.values(import.meta.glob('./writing/*.md', { eager: true })).filter((essay: any) => !essay.frontmatter.draft).map((essay: any) => ({ title: essay.frontmatter.title, url: essay.url, source: '' }));
+---
+<Page>
+  <h1>Milind Sharma</h1>
+  <p>I'm the founder of <a href="https://prastaara.com">Prastaara Industries</a>, which builds software-defined defence products for India.</p>
+  <p>Previously, I studied and lived in Hong Kong, and was the lead electronics engineer at Clearbot.</p>
+  <section aria-labelledby="interests">
+    <h2 id="interests">I'm interested in</h2>
+    <ul>
+      <li>Robotics</li>
+      <li>Production of abundant and low-cost energy</li>
+      <li>Taking the fiction out of science fiction</li>
+      <li>Maintaining a high level of fitness</li>
+    </ul>
+  </section>
+  <section aria-labelledby="writing">
+    <h2 id="writing">Things I think about</h2>
+    <ul class="writing">
+      {[...essays, ...links].map(({ title, url, source }) => <li><a href={url}>{title}</a>{source && <span class="source">{source}</span>}</li>)}
+    </ul>
+  </section>
+  <nav aria-label="Elsewhere"><a href="https://x.com/milindS_">X</a><a href="https://github.com/milind220">GitHub</a></nav>
+</Page>

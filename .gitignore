@@ -43,3 +43,7 @@ next-env.d.ts
 # Aider
 aider.env
 .aider*
+
+# Astro
+/dist/
+/.astro/
